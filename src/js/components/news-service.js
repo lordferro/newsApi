@@ -4,11 +4,15 @@ const URL = 'https://newsapi.org/v2/everything';
 export default class NewsFetchApi { 
     constructor() {
         this.searchQuery = '';
+        this.page = 1;
 
     }
 
     fetchData() {
-        fetch(`${URL}?q=${this.searchQuery}&apiKey=${APIKEY}&pageSize=5&page=1`).then(resolve => resolve.json()).then(({articles}) => console.log(articles))
+        return fetch(`${URL}?q=${this.searchQuery}&apiKey=${APIKEY}&pageSize=5&page=${this.page}`).then(resolve => resolve.json()).then(({ articles }) => {
+            this.incrementPage()
+            return articles
+        })
     }
 
     get query() {
@@ -17,5 +21,12 @@ export default class NewsFetchApi {
 
     set query(newQuery) {
         this.searchQuery = newQuery;
+    }
+    incrementPage() {
+        this.page += 1;
+    }
+
+    resetPage() {
+        this.page = 1;
     }
 }

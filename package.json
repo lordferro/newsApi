@@ -18,7 +18,10 @@
     "url": "https://github.com/lordferro/newsApi/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
