@@ -1,5 +1,5 @@
 import NewsFetchApi from "./js/components/news-service";
-import articlesTpl from './templates/articles.hbs';
+
 import './css/common.css';
 import LoadMoreBtn from './js/components/loadMoreBtn';
 
@@ -44,7 +44,24 @@ function fetchArticles() {
 }
 
 function appendArticles(articles) {
-  refs.articlesContainer.insertAdjacentHTML('beforeend', articlesTpl(articles))
+const markupArticles =  articles.reduce((markup, article) => {
+    return createMarkup(article) + markup;
+  }, '')
+
+  refs.articlesContainer.insertAdjacentHTML('beforeend', markupArticles)
+}
+
+function createMarkup({ url, urlToImage, title, author, description }) {
+  return `  <li>
+    <a href="${url}" target="_blank" rel="noopener noreferrer">
+      <article>
+        <img src="${urlToImage}" alt="" width="480">
+        <h2>${title}</h2>
+        <p>Posted by: ${author}</p>
+        <p>${description}</p>
+      </article>
+    </a>
+  </li>`;
 }
 
 function onError(error) {
