@@ -1,2 +1,0 @@
-const e=new class{fetchData(){fetch(`https://newsapi.org/v2/everything?q=${this.searchQuery}&apiKey=525ac24a30b345fc93a5e4d238eecf81&pageSize=5&page=1`).then((e=>e.json())).then((({articles:e})=>console.log(e)))}get query(){return this.searchQuery}set query(e){this.searchQuery=e}constructor(){this.searchQuery=""}};({form:document.querySelector(".js-search-form")}).form.addEventListener("submit",(function(t){t.preventDefault(),e.searchQuery=t.currentTarget.elements.query.value,e.fetchData()}));
-//# sourceMappingURL=index.acb7508d.js.map
