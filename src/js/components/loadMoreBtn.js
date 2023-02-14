@@ -16,7 +16,7 @@ export default class LoadMoreBtn {
         this.refs.button.classList.remove("is-hidden")
     }
     hide() {
-        this.refs.button.classList("is-hidden")
+        this.refs.button.classList.add("is-hidden")
     }
 
     disable() {
